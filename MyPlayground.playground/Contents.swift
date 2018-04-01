@@ -2,26 +2,21 @@
 
 import UIKit
 
-class Shape {
+protocol Shape {
     
-    func area() -> Float {
-        return 0
-    }
-    
-    func perimeter() -> Float {
-        return 0
-    }
+    func area() -> Float
+    func perimeter() -> Float
 }
 
 class Circle: Shape {
     
-    private var radius: Float = 8.0
+    private var radius: Float = 10.0
     
-    override func area() -> Float {
+    func area() -> Float {
         return Float.pi * pow(radius, 2)
     }
     
-    override func perimeter() -> Float {
+    func perimeter() -> Float {
         return Float.pi * (2 * radius)
     }
 }
@@ -30,24 +25,25 @@ class Squere: Shape {
     
     private var part: Float = 8.0
     
-    override func area() -> Float {
+    func area() -> Float {
         return part * part
     }
     
-    override func perimeter() -> Float {
+    func perimeter() -> Float {
         return 4 * part
     }
 }
 
 class Rectangle: Shape {
-    private var height: Float = 5.0
-    private var width: Float = 8.0
     
-    override func area() -> Float {
+    private var height: Float = 12.0
+    private var width: Float = 9.0
+    
+    func area() -> Float {
         return height * width
     }
     
-    override func perimeter() -> Float {
+    func perimeter() -> Float {
         return 2 * (height + width)
     }
 }
@@ -64,6 +60,5 @@ squerePerimeter.perimeter()
 
 var rectangleArea = Rectangle()
 rectangleArea.area()
-var rectanglePerimetr = Rectangle()
-rectanglePerimetr.perimeter()
-
+var rectanglePerimeter = Rectangle()
+rectanglePerimeter.perimeter()
