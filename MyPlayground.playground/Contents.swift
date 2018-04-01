@@ -10,7 +10,11 @@ protocol Shape {
 
 class Circle: Shape {
     
-    private var radius: Float = 10.0
+    private var radius: Float
+    
+    init(radius: Float) {
+        self.radius = radius
+    }
     
     func area() -> Float {
         return Float.pi * pow(radius, 2)
@@ -23,7 +27,11 @@ class Circle: Shape {
 
 class Squere: Shape {
     
-    private var part: Float = 8.0
+    private var part: Float
+    
+    init(part: Float) {
+        self.part = part
+    }
     
     func area() -> Float {
         return part * part
@@ -36,8 +44,13 @@ class Squere: Shape {
 
 class Rectangle: Shape {
     
-    private var height: Float = 12.0
-    private var width: Float = 9.0
+    private var height: Float
+    private var width: Float
+    
+    init(height: Float, width: Float) {
+        self.height = height
+        self.width = width
+    }
     
     func area() -> Float {
         return height * width
@@ -48,17 +61,18 @@ class Rectangle: Shape {
     }
 }
 
-var circleArea = Circle()
+var circleArea = Circle(radius: 12)
 circleArea.area()
-var circlePerimeter = Circle()
+var circlePerimeter = Circle(radius: 5)
 circlePerimeter.perimeter()
 
-var squereArea = Squere()
+var squereArea = Squere(part: 34)
 squereArea.area()
-var squerePerimeter = Squere()
+var squerePerimeter = Squere(part: 11)
 squerePerimeter.perimeter()
 
-var rectangleArea = Rectangle()
+var rectangleArea = Rectangle(height: 12, width: 5)
 rectangleArea.area()
-var rectanglePerimeter = Rectangle()
+var rectanglePerimeter = Rectangle(height: 10, width: 3)
 rectanglePerimeter.perimeter()
+
