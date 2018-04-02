@@ -25,23 +25,6 @@ class Circle: Shape {
     }
 }
 
-class Squere: Shape {
-    
-    private var part: Float
-    
-    init(part: Float) {
-        self.part = part
-    }
-    
-    func area() -> Float {
-        return part * part
-    }
-    
-    func perimeter() -> Float {
-        return 4 * part
-    }
-}
-
 class Rectangle: Shape {
     
     private var height: Float
@@ -61,18 +44,35 @@ class Rectangle: Shape {
     }
 }
 
+class Squere: Rectangle {
+    
+    private var side: Float
+    
+    init(side: Float) {
+        self.side = side
+        super.init(height: 2, width: 2)
+    }
+    
+    override func area() -> Float {
+        return pow(side, 2)
+    }
+    
+    override func perimeter() -> Float {
+        return 4 * side
+    }
+}
+
 var circleArea = Circle(radius: 12)
 circleArea.area()
 var circlePerimeter = Circle(radius: 5)
 circlePerimeter.perimeter()
 
-var squereArea = Squere(part: 34)
+var squereArea = Squere(side: 34)
 squereArea.area()
-var squerePerimeter = Squere(part: 11)
+var squerePerimeter = Squere(side: 11)
 squerePerimeter.perimeter()
 
 var rectangleArea = Rectangle(height: 12, width: 5)
 rectangleArea.area()
 var rectanglePerimeter = Rectangle(height: 10, width: 3)
 rectanglePerimeter.perimeter()
-
