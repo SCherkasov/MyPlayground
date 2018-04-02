@@ -49,8 +49,9 @@ class Squere: Rectangle {
     private var side: Float
     
     init(side: Float) {
+        super.init(height: side, width: side)
         self.side = side
-        super.init(height: 2, width: 2)
+        
     }
     
     override func area() -> Float {
