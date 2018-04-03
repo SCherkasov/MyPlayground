@@ -17,11 +17,11 @@ class Circle: Shape {
     }
     
     func area() -> Float {
-        return Float.pi * pow(radius, 2)
+        return Float.pi * pow(self.radius, 2)
     }
     
     func perimeter() -> Float {
-        return Float.pi * (2 * radius)
+        return Float.pi * (2 * self.radius)
     }
 }
 
@@ -36,11 +36,11 @@ class Rectangle: Shape {
     }
     
     func area() -> Float {
-        return height * width
+        return self.height * self.width
     }
     
     func perimeter() -> Float {
-        return 2 * (height + width)
+        return 2 * (self.height + self.width)
     }
 }
 
@@ -49,17 +49,17 @@ class Squere: Rectangle {
     private var side: Float
     
     init(side: Float) {
-        super.init(height: side, width: side)
-        self.side = side
         
+        self.side = side
+        super.init(height: side, width: side)
     }
     
     override func area() -> Float {
-        return pow(side, 2)
+        return pow(self.side, 2)
     }
     
     override func perimeter() -> Float {
-        return 4 * side
+        return 4 * self.side
     }
 }
 
@@ -72,6 +72,7 @@ var squereArea = Squere(side: 34)
 squereArea.area()
 var squerePerimeter = Squere(side: 11)
 squerePerimeter.perimeter()
+
 
 var rectangleArea = Rectangle(height: 12, width: 5)
 rectangleArea.area()
