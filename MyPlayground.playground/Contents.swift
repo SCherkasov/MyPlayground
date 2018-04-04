@@ -4,28 +4,44 @@ import UIKit
 
 protocol Shape {
     
-    func area() -> Float
-    func perimeter() -> Float
+    var area: Float { get }
+    var perimeter: Float { get }
 }
 
 class Circle: Shape {
+
+    var area: Float {
+        get {
+            return Float.pi * pow(self.radius, 2)
+        }
+    }
+    
+    var perimeter: Float {
+        get {
+            return Float.pi * (2 * self.radius)
+        }
+    }
     
     private var radius: Float
     
     init(radius: Float) {
         self.radius = radius
     }
-    
-    func area() -> Float {
-        return Float.pi * pow(self.radius, 2)
-    }
-    
-    func perimeter() -> Float {
-        return Float.pi * (2 * self.radius)
-    }
 }
 
 class Rectangle: Shape {
+    
+    var area: Float {
+        get {
+            return self.height * self.width
+        }
+    }
+    
+    var perimeter: Float {
+        get {
+            return 2 * (self.height + self.width)
+        }
+    }
     
     internal var height: Float
     internal var width: Float
@@ -33,14 +49,6 @@ class Rectangle: Shape {
     init(height: Float, width: Float) {
         self.height = height
         self.width = width
-    }
-    
-    func area() -> Float {
-        return self.height * self.width
-    }
-    
-    func perimeter() -> Float {
-        return 2 * (self.height + self.width)
     }
 }
 
@@ -58,29 +66,20 @@ class Squere: Rectangle {
     init(side: Float) {
         super.init(height: side, width: side)
         self.side = side
-        
-    }
-    
-    override func area() -> Float {
-        return pow(self.side, 2)
-    }
-    
-    override func perimeter() -> Float {
-        return 4 * self.side
     }
 }
 
 var circleArea = Circle(radius: 12)
-circleArea.area()
+circleArea.area
 var circlePerimeter = Circle(radius: 5)
-circlePerimeter.perimeter()
+circlePerimeter.perimeter
 
 var squereArea = Squere(side: 10)
-squereArea.area()
+squereArea.area
 var squerePerimeter = Squere(side: 11)
-squerePerimeter.perimeter()
+squerePerimeter.perimeter
 
 var rectangleArea = Rectangle(height: 12, width: 5)
-rectangleArea.area()
+rectangleArea.area
 var rectanglePerimeter = Rectangle(height: 10, width: 3)
-rectanglePerimeter.perimeter()
+rectanglePerimeter.perimeter
