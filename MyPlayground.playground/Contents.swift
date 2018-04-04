@@ -27,8 +27,8 @@ class Circle: Shape {
 
 class Rectangle: Shape {
     
-    private var height: Float
-    private var width: Float
+    internal var height: Float
+    internal var width: Float
     
     init(height: Float, width: Float) {
         self.height = height
@@ -46,12 +46,19 @@ class Rectangle: Shape {
 
 class Squere: Rectangle {
     
-    private var side: Float
+    private var side: Float {
+        get {
+            return super.height
+        }
+        set {
+            super.height = side; super.width = side
+        }
+    }
     
     init(side: Float) {
-        
-        self.side = side
         super.init(height: side, width: side)
+        self.side = side
+        
     }
     
     override func area() -> Float {
@@ -68,11 +75,10 @@ circleArea.area()
 var circlePerimeter = Circle(radius: 5)
 circlePerimeter.perimeter()
 
-var squereArea = Squere(side: 34)
+var squereArea = Squere(side: 10)
 squereArea.area()
 var squerePerimeter = Squere(side: 11)
 squerePerimeter.perimeter()
-
 
 var rectangleArea = Rectangle(height: 12, width: 5)
 rectangleArea.area()
