@@ -59,13 +59,13 @@ class Squere: Rectangle {
             return super.height
         }
         set {
-            super.height = side; super.width = side
+            super.height = side
+            super.width = side
         }
     }
     
     init(side: Float) {
         super.init(height: side, width: side)
-        self.side = side
     }
 }
 
