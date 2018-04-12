@@ -2,23 +2,39 @@
 
 import UIKit
 
-protocol Shape {
+class Shape: NSObject, NSCopying {
+   
+    var area: Float
+    var perimeter: Float
     
-    var area: Float { get }
-    var perimeter: Float { get }
+    init(area: Float, perimeter: Float) {
+        self.area = area
+        self.perimeter = perimeter
+    }
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Shape(area: area, perimeter: perimeter)
+        return copy
+    }
 }
 
 class Circle: Shape {
 
-    var area: Float {
+    override var area: Float {
         get {
             return Float.pi * pow(self.radius, 2)
         }
+        set {
+            
+        }
     }
     
-    var perimeter: Float {
+   override  var perimeter: Float {
         get {
             return Float.pi * (2 * self.radius)
+        }
+        set {
+            
         }
     }
     
@@ -26,20 +42,27 @@ class Circle: Shape {
     
     init(radius: Float) {
         self.radius = radius
+        super.init(area: area, perimeter: perimeter)
     }
 }
 
 class Rectangle: Shape {
     
-    var area: Float {
+    override var area: Float {
         get {
             return self.height * self.width
         }
+        set {
+            
+        }
     }
     
-    var perimeter: Float {
+    override var perimeter: Float {
         get {
             return 2 * (self.height + self.width)
+        }
+        set {
+            
         }
     }
     
@@ -49,6 +72,7 @@ class Rectangle: Shape {
     init(height: Float, width: Float) {
         self.height = height
         self.width = width
+        super.init(area: area, perimeter: perimeter)
     }
 }
 
@@ -90,8 +114,9 @@ let height: Float = 34
 assert(Squere(side: height).area == pow(height,  2))
 assert(Squere(side: height).perimeter == height * 4)
 
-var rectangleArea = Rectangle(height: 12, width: 5)
+var rectangleArea = Rectangle(height: 12, width: 12)
 rectangleArea.area
+var squere = rectangleArea.copy() as! Rectangle
 var rectanglePerimeter = Rectangle(height: 10, width: 3)
 rectanglePerimeter.perimeter
 
