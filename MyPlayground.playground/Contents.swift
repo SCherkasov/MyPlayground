@@ -1,29 +1,30 @@
 //: Playground - noun: a place where people can play
 
 import UIKit
+import Foundation
 
 protocol Shape: NSCopying {
-    var area: Float { get }
-    var perimeter: Float { get }
+    var area: Double { get }
+    var perimeter: Double { get }
 }
 
 class Circle: NSObject, Shape {
 
-    var radius: Float
+    var radius: Double
     
-    var area: Float {
+    var area: Double {
         get {
-            return Float.pi * pow(self.radius, 2)
+            return Double.pi * pow(self.radius, 2)
         }
     }
     
-   var perimeter: Float {
+   var perimeter: Double {
         get {
-            return Float.pi * (2 * self.radius)
+            return Double.pi * (2 * self.radius)
         }
     }
     
-    init(radius: Float) {
+    init(radius: Double) {
         self.radius = radius
     }
     
@@ -34,22 +35,22 @@ class Circle: NSObject, Shape {
 
 class Rectangle: Shape {
     
-    var width: Float
-    var height: Float
+    var width: Double
+    var height: Double
     
-    var area: Float {
+    var area: Double {
         get {
             return self.height * self.width
         }
     }
     
-    var perimeter: Float {
+    var perimeter: Double {
         get {
             return 2 * (self.height + self.width)
         }
     }
     
-    init(width: Float, height: Float) {
+    init(width: Double, height: Double) {
         self.width = width
         self.height = height
     }
@@ -62,7 +63,7 @@ class Rectangle: Shape {
 class Squere: Rectangle {
     var color: UIColor
     
-    private var side: Float {
+    private var side: Double {
         get {
             return super.height
         }
@@ -72,7 +73,7 @@ class Squere: Rectangle {
         }
     }
     
-    init(side: Float, color: UIColor) {
+    init(side: Double, color: UIColor) {
         self.color = color
         super.init(width: side, height: side)
     }
@@ -85,13 +86,13 @@ class Squere: Rectangle {
     }
 }
 
-let delta = Float(pow(10, -9))
+let delta = Double(0.000001)
 
 // Test for circle area
-assert(abs(Circle(radius: 12).area - (pow(12, 2) * Float.pi)) < delta)
+assert(abs(Circle(radius: 12).area - (pow(12, 2) * Double.pi)) < delta)
 
 // Test for circle perimeter
-assert(abs(Circle(radius: 5).perimeter - 2 * 5 * Float.pi) < delta)
+assert(abs(Circle(radius: 5).perimeter - 2 * 5 * Double.pi) < delta)
 
 // Test for square area
 assert(Squere(side: 10, color: .green).area == pow(10, 2))
@@ -107,7 +108,7 @@ assert(Rectangle(width: 3, height: 10).perimeter == 2 * (3 + 10))
 
 // Test for copy
 let rect = Rectangle(width: 3, height: 10)
-assert(rect != (rect.copy() as! Rectangle))
+assert(rect !== (rect.copy() as! Rectangle))
 assert(rect.width == (rect.copy() as! Rectangle).width)
 assert(rect.height == (rect.copy() as! Rectangle).height)
 
