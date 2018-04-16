@@ -8,7 +8,7 @@ protocol Shape: NSCopying {
     var perimeter: Double { get }
 }
 
-class Circle: NSObject, Shape {
+class Circle: Shape {
 
     var radius: Double
     
